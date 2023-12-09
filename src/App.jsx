@@ -1,24 +1,22 @@
-import logo from "./logo.svg";
 import "./App.css";
- 
+import DefaultLayout from "./layouts/defaultLayout/DefaultLayout";
+import GuestLayout from "./layouts/guestLayout/GuestLayout";
+// pages
+import { Home, About } from "./pages/index";
+
+import { Route, Routes } from "react-router-dom";
+
 function App() {
+  const token = null;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className="text-4xl text-red-500">
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={token ? <DefaultLayout /> : <GuestLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
