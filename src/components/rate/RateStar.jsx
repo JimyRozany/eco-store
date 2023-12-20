@@ -8,7 +8,7 @@ const RateStar = ({rate}) => {
         let num = index + 0.5; 
     
         return (
-          <span key={index} className="text-yellow-600 text-lg">
+          <span key={index} className="text-yellow-600 text-sm lg:text-lg">
             {rate >= index + 1 ? ( 
               <FaStar />
             ) : rate >= num ? (
@@ -21,7 +21,7 @@ const RateStar = ({rate}) => {
       });
 
   return (
-    <>{stars}</>
+    <div className='flex'>{stars}</div>
   )
 }
 

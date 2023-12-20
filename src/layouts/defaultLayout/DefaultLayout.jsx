@@ -11,7 +11,9 @@ const DefaultLayout = () => {
         <Outlet />
       </div>
       {/* ****** endcontent ****** */}
-      <Footer />
+      <div className="mt-6">
+        <Footer />
+      </div>
     </div>
   );
 };

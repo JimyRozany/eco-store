@@ -11,7 +11,9 @@ const GuestLayout = () => {
         <Outlet />
       </div>
       {/* ****** endcontent ****** */}
-      <Footer />
+      <div className="">
+        <Footer />
+      </div>
     </div>
   );
 };
