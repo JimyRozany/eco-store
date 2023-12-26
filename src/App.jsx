@@ -19,6 +19,7 @@ import {
 //-----------------------
 
 import { SearchDialog } from "./components/searchDialog/SearchDialog";
+import ScrollToTopOnMount from "./components/scrollToTopOnMount/ScrollToTopOnMount";
 
 function App() {
   const token = null;
@@ -26,6 +27,7 @@ function App() {
   return (
     <>
       <SearchDialog />
+      <ScrollToTopOnMount />
       <Routes>
         <Route path="/" element={token ? <DefaultLayout /> : <GuestLayout />}>
           <Route index element={<Home />} />

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 
 import {
   Drawer,
@@ -15,8 +17,9 @@ import { CardProduct } from "../../components";
 // icons
 import { CiBoxList } from "react-icons/ci";
 import { FaRegTrashAlt } from "react-icons/fa";
-
 import { IoIosArrowDown } from "react-icons/io";
+
+
 const AllProducts = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openAccordion, setOpenAccordion] = useState(0);
@@ -25,6 +28,21 @@ const AllProducts = () => {
   const handleCloseDrawer = () => setOpenDrawer(false);
   const openCloseAccordion = (value) =>
     setOpenAccordion(openAccordion === value ? 0 : value);
+
+  const products = JSON.parse(localStorage.getItem("allProducts"));
+
+  const cardProductsJSX = products?.map((item) => (
+    <Link to={`/show-product/${item.id}`} key={item.id}>
+      <CardProduct
+        name={item.title}
+        price={item.price}
+        image={item.image}
+        desc={item.description}
+        rate={item.rating.rate}
+        // discount={item.discount}
+      />
+    </Link>
+  ));
 
   return (
     <div className=" mt-6 p-6">
@@ -153,15 +171,7 @@ const AllProducts = () => {
       {/* products */}
       <div className="flex justify-center items-center">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 md:gap-1  lg:grid-cols-4 gap-2 md:px-0 px-2">
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
+         {cardProductsJSX}
         </div>
       </div>
       {/* ****** end products ****** */}

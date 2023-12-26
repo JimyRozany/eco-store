@@ -8,11 +8,13 @@ import { CiSearch, CiHeart } from "react-icons/ci";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import { RiShoppingBagLine } from "react-icons/ri";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { showHideDialog } from "../../features/search/searchSlice";
 
 const MyNavbar = () => {
   const [openNav, setOpenNav] = useState(false);
+
+  const numberCartItems = useSelector((state)=>state.cart.cartItems.length)
 
   const dispatch = useDispatch();
 
@@ -81,7 +83,7 @@ const MyNavbar = () => {
           </IconButton>
           {/* Cart button  */}
           <Link to="/cart">
-            <Badge content="5">
+            <Badge content={numberCartItems}>
               <IconButton variant="text" className="p-0 m-0">
                 <RiShoppingBagLine className=" text-2xl lg:text-4xl text-mainDarkColor hover:text-mainColor duration-300" />
               </IconButton>

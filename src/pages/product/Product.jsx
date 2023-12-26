@@ -1,11 +1,12 @@
-//images
+
 import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+
 // components
 import RateStar from "../../components/rate/RateStar";
 import CardProduct from "../../components/cardProduct/CardProduct";
 
-//images
-import airpods from "../../images/airpods.png";
+
 // icons
 import { FaRegHeart } from "react-icons/fa";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -15,8 +16,6 @@ import { BiSolidRightArrow } from "react-icons/bi";
 import { Button } from "@material-tailwind/react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const responsive = {
   superLargeDesktop: {
@@ -40,14 +39,13 @@ const responsive = {
 
 const Product = () => {
   const { productId } = useParams();
-  const products = useSelector((state) => state.fetchProducts.products);
+  const products = JSON.parse(localStorage.getItem("allProducts"));
 
   const product = products.filter((item) => {
-    if (item.id == productId) {
+    if (item.id === Number(productId)) {
       return item;
     }
   });
-  console.log("my product ///////// ", product);
 
   //Ten products in the same category
   const cardProductsJSX = products?.map((item) => {

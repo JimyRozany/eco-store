@@ -20,6 +20,7 @@ const fetchProductsSlice = createSlice({
       })
       .addCase(fetchProductsThunk.fulfilled, (state, action) => {
         console.log("from Slice -------------------",action.payload);
+        localStorage.setItem("allProducts" ,JSON.stringify(action.payload))
         state.products = action.payload;
         state.isLoading = false;
       });
