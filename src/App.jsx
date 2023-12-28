@@ -14,12 +14,14 @@ import {
   Product,
   Checkout,
   AllProducts,
+  Like,
 } from "./pages/index";
 
-//-----------------------
+// components
 
 import { SearchDialog } from "./components/searchDialog/SearchDialog";
 import ScrollToTopOnMount from "./components/scrollToTopOnMount/ScrollToTopOnMount";
+import ToastMessage from "./components/toastMessage/ToastMessage";
 
 function App() {
   const token = null;
@@ -28,6 +30,8 @@ function App() {
     <>
       <SearchDialog />
       <ScrollToTopOnMount />
+      <ToastMessage />
+
       <Routes>
         <Route path="/" element={token ? <DefaultLayout /> : <GuestLayout />}>
           <Route index element={<Home />} />
@@ -37,6 +41,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/show-product/:productId" element={<Product />} />
           <Route path="/all-products" element={<AllProducts />} />
+          <Route path="/liked" element={<Like />} />
         </Route>
         <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<NotFound />} />

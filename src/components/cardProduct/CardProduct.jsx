@@ -1,11 +1,13 @@
+// components
 import RateStar from "../rate/RateStar";
-
 // icons
 import { CiHeart } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 // redux
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../../features/cart/cartSlice";
+import { addToCart} from "../../features/cart/cartSlice";
+import { addToLike } from "../../features/like/likeSlice";
+import { closeToast, openToast } from "../../features/toastMessage/toastMessage";
 
 const CardProduct = ({
   title,
@@ -22,19 +24,27 @@ const CardProduct = ({
   const handleAddToCart = (event) => {
     event.preventDefault();
     dispatch(addToCart({ id, title, price, image, description, rating }));
-    console.log("cart items from card product ,,,, " ,items);
+    dispatch(openToast("added successfully"))
+    setTimeout(() => {
+      dispatch(closeToast())
+    }, 3000);
+    
   };
-  const handleRemoveFromCart = (event) => {
+  const handleAddToLike = (event) => {
     event.preventDefault();
-    dispatch(removeFromCart(id));
+    dispatch(addToLike({ id, title, price, image, description, rating }));
+    dispatch(openToast("liked successfully"))
+    setTimeout(() => {
+      dispatch(closeToast())
+    }, 3000);
   };
 
   return (
     <>
       {/* card  */}
-      <div className=" w-36 h-64  md:w-56 md:h-80 p-1 md:p-2 flex flex-col rounded-md shadow-lg border border-red-500">
+      <div className=" w-36 h-64  md:w-56 md:h-80 p-1 md:p-2 flex flex-col rounded-md shadow-xl border ">
         {/* card image  */}
-        <div className="relative flex justify-center w-32 h-32 md:w-46 md:h-46 rounded-md overflow-hidden self-center group">
+        <div className="relative flex justify-center w-32 h-32 md:w-46 md:h-46 lg:w-44 lg:h-44 rounded-md overflow-hidden self-center group">
           <img
             src={image}
             alt=""
@@ -45,7 +55,7 @@ const CardProduct = ({
               <div className="p-1 bg-[rgba(0,0,0,0.6)] hover:bg-[rgba(0,0,0,1)] rounded-full">
                 <CiHeart
                   className=" text-xl md:text-3xl text-white"
-                  onClick={handleRemoveFromCart}
+                  onClick={handleAddToLike}
                 />
               </div>
               <div className="p-1 bg-[rgba(0,0,0,0.6)] hover:bg-[rgba(0,0,0,1)] rounded-full">

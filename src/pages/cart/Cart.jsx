@@ -19,6 +19,7 @@ import {
   getCart,
 } from "../../features/cart/cartSlice";
 import { Link } from "react-router-dom";
+import { closeToast, openToast } from "../../features/toastMessage/toastMessage";
 const Cart = () => {
   const [checkboxInput, setCheckboxInput] = useState(false);
 
@@ -37,10 +38,18 @@ const Cart = () => {
   // delete from cart
   const handleRemoveFromCart = (item) => {
     dispatch(removeFromCart(item));
+    dispatch(openToast("removed successfully"))
+    setTimeout(() => {
+      dispatch(closeToast())
+    }, 3000);
   };
   // delete all products from cart
   const handleClear = () => {
     dispatch(clearCart());
+    dispatch(openToast("cleared successfully"))
+    setTimeout(() => {
+      dispatch(closeToast())
+    }, 3000);
   };
 
   useEffect(() => {

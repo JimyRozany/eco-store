@@ -78,12 +78,12 @@ const MyNavbar = () => {
             <CiSearch className="text-2xl lg:text-4xl text-mainDarkColor hover:text-mainColor duration-300" />
           </IconButton>
           {/* **** End search Button **** */}
-          <IconButton variant="text">
+          <Link to="/liked" >
             <CiHeart className="text-2xl lg:text-4xl text-mainDarkColor hover:text-mainColor duration-300" />
-          </IconButton>
+          </Link>
           {/* Cart button  */}
           <Link to="/cart">
-            <Badge content={numberCartItems}>
+            <Badge content={numberCartItems} invisible={numberCartItems === 0}>
               <IconButton variant="text" className="p-0 m-0">
                 <RiShoppingBagLine className=" text-2xl lg:text-4xl text-mainDarkColor hover:text-mainColor duration-300" />
               </IconButton>

@@ -16,6 +16,10 @@ import { BiSolidRightArrow } from "react-icons/bi";
 import { Button } from "@material-tailwind/react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../features/cart/cartSlice";
+import { closeToast, openToast } from "../../features/toastMessage/toastMessage";
+import { addToLike } from "../../features/like/likeSlice";
 
 const responsive = {
   superLargeDesktop: {
@@ -41,6 +45,9 @@ const Product = () => {
   const { productId } = useParams();
   const products = JSON.parse(localStorage.getItem("allProducts"));
 
+
+  const dispatch = useDispatch()
+
   const product = products.filter((item) => {
     if (item.id === Number(productId)) {
       return item;
@@ -53,12 +60,14 @@ const Product = () => {
       return (
         <Link to={`/show-product/${item.id}`} key={item.id}>
           <CardProduct
-            name={item.title}
-            price={item.price}
-            image={item.image}
-            desc={item.description}
-            rate={item.rating.rate}
+            // name={item.title}
+            // price={item.price}
+            // image={item.image}
+            // desc={item.description}
+            // rate={item.rating.rate}
             // discount={item.discount}
+            //----
+            {...item}
           />
         </Link>
       );
@@ -73,6 +82,27 @@ const Product = () => {
   const decrementQuantity = () => {
     if (quantity > 1) setQuantity(quantity - 1);
   };
+
+  const handleAddToCart = (event) => {
+    event.preventDefault();
+    dispatch(addToCart(product[0]));
+    dispatch(openToast("added successfully"))
+    setTimeout(() => {
+      dispatch(closeToast())
+    }, 3000);
+    
+  };
+  const handleAddToLike = (event) => {
+    event.preventDefault();
+    dispatch(addToLike(product[0]));
+    dispatch(openToast("liked successfully"))
+    setTimeout(() => {
+      dispatch(closeToast())
+    }, 3000);
+  };
+
+
+
   return (
     <div className="w-screen p-5">
       <div className=" flex justify-center items-center">
@@ -127,10 +157,10 @@ const Product = () => {
                     +
                   </span>
                 </div>
-                <Button className="bg-mainDarkColor hover:bg-mainColor duration-300 normal-case md:text-md lg:text-lg lg:px-12">
+                <Button  className="bg-mainDarkColor hover:bg-mainColor duration-300 normal-case md:text-md lg:text-lg lg:px-12" onClick={handleAddToCart}>
                   Add To Cart
                 </Button>
-                <Button className="bg-mainColor hover:bg-mainDarkColor duration-300 normal-case p-2 text-xl lg:text-3xl">
+                <Button className="bg-mainColor hover:bg-mainDarkColor duration-300 normal-case p-2 text-xl lg:text-3xl" onClick={handleAddToLike}>
                   <FaRegHeart />
                 </Button>
               </div>

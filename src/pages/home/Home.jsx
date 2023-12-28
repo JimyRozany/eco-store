@@ -18,6 +18,8 @@ const Home = () => {
     dispatch(fetchProductsThunk());
   }, []);
 
+  
+
   return (
     <>
       <Hero />
