@@ -34,7 +34,7 @@ const Like = () => {
         <div className=" relative">
           <CardProduct {...item} />
           <IoIosClose
-            className="text-4xl absolute top-1 right-2 hover:scale-125 transition-all duration-200 text-mainDarkColor hover:text-mainColor"
+            className="text-4xl absolute top-1 right-2 hover:scale-125 transition-all duration-200 text-white hover:text-mainColor bg-black/50 rounded-full"
             onClick={(e) => handleRemove(e, item)}
           />
         </div>

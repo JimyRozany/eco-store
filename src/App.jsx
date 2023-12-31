@@ -15,6 +15,7 @@ import {
   Checkout,
   AllProducts,
   Like,
+  SearchResult,
 } from "./pages/index";
 
 // components
@@ -42,6 +43,7 @@ function App() {
           <Route path="/show-product/:productId" element={<Product />} />
           <Route path="/all-products" element={<AllProducts />} />
           <Route path="/liked" element={<Like />} />
+          <Route path="/search-result" element={<SearchResult />} />
         </Route>
         <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<NotFound />} />
