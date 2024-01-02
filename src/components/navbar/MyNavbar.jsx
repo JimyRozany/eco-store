@@ -14,8 +14,9 @@ import { showHideDialog } from "../../features/search/searchSlice";
 const MyNavbar = () => {
   const [openNav, setOpenNav] = useState(false);
 
-  const numberCartItems = useSelector((state)=>state.cart.cartItems.length)
+  const numberCartItems = useSelector((state) => state.cart.cartItems.length);
 
+  let isAuth = localStorage.getItem("isAuth");
   const dispatch = useDispatch();
 
   // handlers
@@ -33,9 +34,12 @@ const MyNavbar = () => {
   const navList = (
     <ul className="text-mainDarkColor  font-Poppins font-medium lg:flex items-center lg:text-xl">
       <li>
-        <h1 className="flex items-center pe-2 active:text-mainColor md:hover:text-mainColor cursor-pointer duration-300">
+        <Link
+          to="/"
+          className="flex items-center pe-2 active:text-mainColor md:hover:text-mainColor cursor-pointer duration-300"
+        >
           Home
-        </h1>
+        </Link>
       </li>
 
       <li>
@@ -51,10 +55,23 @@ const MyNavbar = () => {
       </li>
 
       <li>
-        <h1 className="flex items-center active:text-mainColor md:hover:text-mainColor cursor-pointer duration-300">
+        <Link
+          to="about"
+          className="flex items-center pe-2 active:text-mainColor md:hover:text-mainColor cursor-pointer duration-300"
+        >
           About
-        </h1>
+        </Link>
       </li>
+      {isAuth && (
+        <li>
+          <Link
+            to="profile"
+            className="flex items-center active:text-mainColor md:hover:text-mainColor cursor-pointer duration-300"
+          >
+            profile
+          </Link>
+        </li>
+      )}
     </ul>
   );
 
@@ -78,7 +95,7 @@ const MyNavbar = () => {
             <CiSearch className="text-2xl lg:text-4xl text-mainDarkColor hover:text-mainColor duration-300" />
           </IconButton>
           {/* **** End search Button **** */}
-          <Link to="/liked" >
+          <Link to="/liked">
             <CiHeart className="text-2xl lg:text-4xl text-mainDarkColor hover:text-mainColor duration-300" />
           </Link>
           {/* Cart button  */}

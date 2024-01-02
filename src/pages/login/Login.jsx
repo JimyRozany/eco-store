@@ -2,7 +2,7 @@ import { Alert, Card, Input, Button, Spinner } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { authenticateThunk } from "../../features/auth/authSlice";
+import { loginThunk } from "../../features/auth/authSlice";
 import { useEffect, useState } from "react";
 const Login = () => {
   const [loginInputs, setLoginInputs] = useState({
@@ -18,7 +18,7 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const handleLogin = () => {
-    dispatch(authenticateThunk(loginInputs));
+    dispatch(loginThunk(loginInputs));
   };
 
   useEffect(() => {

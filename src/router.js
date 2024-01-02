@@ -14,6 +14,7 @@ import {
   Like,
   SearchResult,
   Checkout,
+  Profile,
 } from "./pages/index";
 import PrivateRoutes from "./utilities/PrivateRoutes";
 
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
     path: "/",
     element: <PrivateRoutes />,
     children: [
+      {
+        path: "profile",
+        element: <Profile />,
+      },
       {
         path: "checkout",
         element: <Checkout />,

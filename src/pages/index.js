@@ -9,3 +9,4 @@ export { default as Checkout } from "./checkout/Checkout";
 export { default as AllProducts } from "./allProducts/AllProducts";
 export { default as Like } from "./like/Like";
 export { default as SearchResult } from "./searchResult/SearchResult";
+export { default as Profile } from "./profile/Profile";
