@@ -1,12 +1,13 @@
-import { Spinner } from "@material-tailwind/react";
-import CardProduct from "../../components/cardProduct/CardProduct";
-
+import { Link } from "react-router-dom";
+// components
+import { CardProduct } from "../../components/index";
+// icons
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
+// carousel
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+//redux
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 
 const responsive = {
   superLargeDesktop: {

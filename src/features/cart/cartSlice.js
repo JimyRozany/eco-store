@@ -18,23 +18,32 @@ export const cartSlice = createSlice({
         const tempProduct = { ...action.payload, cartItemQuantity: 1 };
         state.cartItems.push(tempProduct);
       }
-      localStorage.setItem('cartItems' ,JSON.stringify(state.cartItems))
-      localStorage.setItem('cartTotalAmount' ,JSON.stringify(state.totalAmount))
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      localStorage.setItem(
+        "cartTotalAmount",
+        JSON.stringify(state.totalAmount)
+      );
     },
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter(
         (item) => item.id !== action.payload.id
       );
-      localStorage.setItem('cartItems' ,JSON.stringify(state.cartItems))
-      localStorage.setItem('cartTotalAmount' ,JSON.stringify(state.totalAmount))
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      localStorage.setItem(
+        "cartTotalAmount",
+        JSON.stringify(state.totalAmount)
+      );
     },
     incrementQuantity: (state, action) => {
       const indexItem = state.cartItems.findIndex(
         (item) => item.id === action.payload.id
       );
       state.cartItems[indexItem].cartItemQuantity += 1;
-      localStorage.setItem('cartItems' ,JSON.stringify(state.cartItems))
-      localStorage.setItem('cartTotalAmount' ,JSON.stringify(state.totalAmount))
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      localStorage.setItem(
+        "cartTotalAmount",
+        JSON.stringify(state.totalAmount)
+      );
     },
     decrementQuantity: (state, action) => {
       const indexItem = state.cartItems.findIndex(
@@ -43,29 +52,37 @@ export const cartSlice = createSlice({
       if (state.cartItems[indexItem].cartItemQuantity > 1) {
         state.cartItems[indexItem].cartItemQuantity -= 1;
       }
-      localStorage.setItem('cartItems' ,JSON.stringify(state.cartItems))
-      localStorage.setItem('cartTotalAmount' ,JSON.stringify(state.totalAmount))
-      
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      localStorage.setItem(
+        "cartTotalAmount",
+        JSON.stringify(state.totalAmount)
+      );
     },
     clearCart: (state) => {
       state.cartItems = [];
     },
-    sumTotalPrice:(state)=>{
-      let total = 0
+    sumTotalPrice: (state) => {
+      let total = 0;
       state.cartItems.map(
         (item) => (total += item.price * item.cartItemQuantity)
       );
-      state.totalAmount = total.toFixed(2)
-      localStorage.setItem('cartItems' ,JSON.stringify(state.cartItems))
-      localStorage.setItem('cartTotalAmount' ,JSON.stringify(state.totalAmount))
+      state.totalAmount = total.toFixed(2);
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      localStorage.setItem(
+        "cartTotalAmount",
+        JSON.stringify(state.totalAmount)
+      );
     },
-    
-    getCart:(state)=>{
-      const resultItems = JSON.parse(localStorage.getItem('cartItems'))
-      const resultTotalAmount = JSON.parse(localStorage.getItem('cartTotalAmount'))
-      state.cartItems = resultItems ;
-      state.totalAmount = resultTotalAmount
-    }
+
+    getCart: (state) => {
+      const resultItems = JSON.parse(localStorage.getItem("cartItems"));
+
+      const resultTotalAmount = JSON.parse(
+        localStorage.getItem("cartTotalAmount")
+      );
+      state.cartItems = !resultItems ? [] : resultItems;
+      state.totalAmount = !resultTotalAmount ? 0 : resultTotalAmount;
+    },
   },
 });
 
@@ -76,8 +93,7 @@ export const {
   decrementQuantity,
   clearCart,
   sumTotalPrice,
-  
-  getCart
+  getCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

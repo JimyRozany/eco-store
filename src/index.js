@@ -1,24 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "@material-tailwind/react";
-import { BrowserRouter as Router } from "react-router-dom";
 
 //redux
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <ThemeProvider>
-          <App />
-        </ThemeProvider>
-      </Router>
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 );

@@ -4,6 +4,7 @@ import fetchProductsSlice from "../features/fetchProducts/fetchProductsSlice";
 import cartReducer from "../features/cart/cartSlice";
 import likeReducer from "../features/like/likeSlice";
 import toastMessageReducer from "../features/toastMessage/toastMessage";
+import authReducer from "../features/auth/authSlice";
 export const store = configureStore({
   reducer: {
     fetchProducts: fetchProductsSlice,
@@ -11,5 +12,6 @@ export const store = configureStore({
     cart: cartReducer,
     like: likeReducer,
     toastMessage: toastMessageReducer,
+    auth: authReducer,
   },
 });

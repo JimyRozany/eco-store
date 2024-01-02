@@ -19,7 +19,10 @@ import {
   getCart,
 } from "../../features/cart/cartSlice";
 import { Link } from "react-router-dom";
-import { closeToast, openToast } from "../../features/toastMessage/toastMessage";
+import {
+  closeToast,
+  openToast,
+} from "../../features/toastMessage/toastMessage";
 const Cart = () => {
   const [checkboxInput, setCheckboxInput] = useState(false);
 
@@ -38,17 +41,17 @@ const Cart = () => {
   // delete from cart
   const handleRemoveFromCart = (item) => {
     dispatch(removeFromCart(item));
-    dispatch(openToast("removed successfully"))
+    dispatch(openToast("removed successfully"));
     setTimeout(() => {
-      dispatch(closeToast())
+      dispatch(closeToast());
     }, 3000);
   };
   // delete all products from cart
   const handleClear = () => {
     dispatch(clearCart());
-    dispatch(openToast("cleared successfully"))
+    dispatch(openToast("cleared successfully"));
     setTimeout(() => {
-      dispatch(closeToast())
+      dispatch(closeToast());
     }, 3000);
   };
 
@@ -111,7 +114,7 @@ const Cart = () => {
   return (
     <div className="w-screen flex justify-center items-start mt-5">
       {cartItems.length !== 0 ? (
-        <div className=" lg:px-20 border border-yellow-500">
+        <div className=" lg:px-20 ">
           {/* products table */}
           <table className=" border border-blue-gray-400 text-center text-sm font-light font-Poppins text-mainDarkColor">
             <thead className="md:border-b border-blue-gray-400 ">

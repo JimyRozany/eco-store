@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Signup = () => {
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
+    <div className="w-screen flex justify-center items-center">
       <Card color="transparent" shadow={true} className="font-Poppins p-4">
         <h1 className="text-mainDarkColor text-center text-4xl font-medium ">
           Signup

@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 export const likeSlice = createSlice({
   name: "like",
   initialState: {
@@ -27,12 +26,14 @@ export const likeSlice = createSlice({
       );
       localStorage.setItem("liked", JSON.stringify(state.likedProducts));
     },
-    getLiked:(state)=>{
-        state.likedProducts = JSON.parse(localStorage.getItem("liked"))
-    }
+    getLiked: (state) => {
+      state.likedProducts = localStorage.getItem("liked")
+        ? JSON.parse(localStorage.getItem("liked"))
+        : [];
+    },
   },
 });
 
-export const { addToLike ,removeFromLike ,getLiked} = likeSlice.actions;
+export const { addToLike, removeFromLike, getLiked } = likeSlice.actions;
 
 export default likeSlice.reducer;

@@ -7,20 +7,22 @@ import { CardProduct } from "../../components";
 // icons
 import { IoIosClose } from "react-icons/io";
 import { FaHeartCirclePlus } from "react-icons/fa6";
-import { closeToast, openToast } from "../../features/toastMessage/toastMessage";
+import {
+  closeToast,
+  openToast,
+} from "../../features/toastMessage/toastMessage";
 
 const Like = () => {
   const liked = useSelector((state) => state.like.likedProducts);
   const dispatch = useDispatch();
 
   // handlers
-
   const handleRemove = (e, item) => {
     e.preventDefault();
     dispatch(removeFromLike(item));
-    dispatch(openToast("removed successfully"))
+    dispatch(openToast("removed successfully"));
     setTimeout(() => {
-      dispatch(closeToast())
+      dispatch(closeToast());
     }, 3000);
   };
 

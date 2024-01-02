@@ -1,9 +1,12 @@
 // components
-import { Outlet } from "react-router-dom";
-import { AuthBar, MyNavbar, Footer } from "../../components/index";
+import { Outlet, ScrollRestoration } from "react-router-dom";
+import { AuthBar, MyNavbar, Footer, SearchDialog, ToastMessage } from "../../components/index";
 const GuestLayout = () => {
   return (
     <div>
+      <SearchDialog />
+      <ToastMessage />
+      <ScrollRestoration />
       <AuthBar />
       <MyNavbar />
       {/* content */}

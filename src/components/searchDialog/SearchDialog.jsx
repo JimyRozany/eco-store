@@ -15,7 +15,7 @@ import {
   searchAction,
 } from "../../features/search/searchSlice";
 
-export function SearchDialog() {
+export default function SearchDialog() {
   const [searchKey, setSearchKey] = useState("");
   const open = useSelector((state) => state.search.openDialog);
   const dispatch = useDispatch();

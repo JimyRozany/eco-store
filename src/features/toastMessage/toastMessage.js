@@ -8,7 +8,6 @@ const toastMessage = createSlice({
   },
   reducers: {
     openToast: (state, action) => {
-        console.log("opennnnnnnnnnnnn");
       state.message = action.payload;
       state.isOpen = true;
     },
