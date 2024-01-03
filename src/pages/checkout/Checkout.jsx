@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 // icons
 import { Button, Input, Badge } from "@material-tailwind/react";
@@ -6,17 +7,22 @@ import { Button, Input, Badge } from "@material-tailwind/react";
 import { IoBagHandleOutline } from "react-icons/io5";
 
 import ReactFlagsSelect from "react-flags-select";
-
-// images
-import airpods from "../../images/airpods.png";
+// redux
 import { useDispatch, useSelector } from "react-redux";
 import { getCart } from "../../features/cart/cartSlice";
-import { Link } from "react-router-dom";
 
 const Checkout = () => {
+  const userInfo = JSON.parse(localStorage.getItem("USER_INFO"));
+
   const [selected, setSelected] = useState("EG");
 
-  const [deliveryInfo, setDeliveryInfo] = useState({});
+  const [deliveryInfo, setDeliveryInfo] = useState({
+    firstName: userInfo.name.firstname,
+    lastName: userInfo.name.lastname,
+    address: userInfo.address.street,
+    city: userInfo.address.city,
+    postalCode: userInfo.address.zipcode,
+  });
 
   const cartItems = useSelector((state) => state.cart.cartItems);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
@@ -54,7 +60,7 @@ const Checkout = () => {
       <div className="w-full border-b flex justify-between items-center px-10 lg:px-28 py-4">
         <h1 className="text-xl md:text-4xl font-medium text-mainColor">Logo</h1>
         <Link to="/cart">
-          <Badge content={cartItems.length} >
+          <Badge content={cartItems.length}>
             <IoBagHandleOutline className="text-2xl md:text-4xl text-mainColor hover:opacity-70" />
           </Badge>
         </Link>
@@ -66,7 +72,7 @@ const Checkout = () => {
           <div className="px-2 md:px-5">
             <h1 className="text-lg md:text-2xl text-mainDarkColor">Account</h1>
             <h1 className="text-[14px] md:text-md text-gray-600 pt-2">
-              example@email.com
+              {userInfo.email}
             </h1>
             <hr className="my-3 md:my-6 bg-blue-gray-400 border-none h-[1px]" />
           </div>
@@ -102,7 +108,7 @@ const Checkout = () => {
                   color="deep-orange"
                   label="Last name "
                   className="text-md md:text-xl "
-                  alue={deliveryInfo.lastName}
+                  value={deliveryInfo.lastName}
                   onChange={(e) =>
                     setDeliveryInfo({
                       ...deliveryInfo,
@@ -127,7 +133,7 @@ const Checkout = () => {
                   color="deep-orange"
                   label="City"
                   className="text-md md:text-xl "
-                  alue={deliveryInfo.city}
+                  value={deliveryInfo.city}
                   onChange={(e) =>
                     setDeliveryInfo({ ...deliveryInfo, city: e.target.value })
                   }
@@ -138,7 +144,7 @@ const Checkout = () => {
                   color="deep-orange"
                   label="Governorate"
                   className=" text-md md:text-xl "
-                  alue={deliveryInfo.governorate}
+                  value={deliveryInfo.governorate}
                   onChange={(e) =>
                     setDeliveryInfo({
                       ...deliveryInfo,
@@ -152,7 +158,7 @@ const Checkout = () => {
                   color="deep-orange"
                   label="Postal code"
                   className="text-md md:text-xl  "
-                  alue={deliveryInfo.postalCode}
+                  value={deliveryInfo.postalCode}
                   onChange={(e) =>
                     setDeliveryInfo({
                       ...deliveryInfo,

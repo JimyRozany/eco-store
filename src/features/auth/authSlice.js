@@ -14,6 +14,14 @@ export const loginThunk = createAsyncThunk(
   }
 );
 
+export const getUserInfoThunk = createAsyncThunk(
+  "getUserInfoThunk",
+  async () => {
+    const response = await axios.get("https://fakestoreapi.com/users/1");
+    return response;
+  }
+);
+
 const authSlice = createSlice({
   name: "authentication",
   initialState: {
@@ -33,6 +41,8 @@ const authSlice = createSlice({
       state.isAuth = false;
       localStorage.removeItem("accessToken");
       localStorage.removeItem("isAuth");
+      localStorage.removeItem("USER_INFO");
+      state.isLoading = false
     },
   },
   extraReducers: (builder) => {
@@ -55,6 +65,13 @@ const authSlice = createSlice({
         state.isAuth = true;
         console.log("from auth slice isAuth is ", state.isAuth);
         localStorage.setItem("isAuth", JSON.stringify(state.isAuth));
+      })
+      .addCase(getUserInfoThunk.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUserInfoThunk.fulfilled, (state, action) => {
+        state.userInfo = action.payload.data;
+        localStorage.setItem("USER_INFO", JSON.stringify(action.payload.data));
       });
   },
 });

@@ -60,6 +60,8 @@ export const cartSlice = createSlice({
     },
     clearCart: (state) => {
       state.cartItems = [];
+      localStorage.removeItem("cartItems")
+      localStorage.removeItem("cartTotalAmount")
     },
     sumTotalPrice: (state) => {
       let total = 0;

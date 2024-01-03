@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 // material tailwind components
 import {
@@ -15,7 +15,7 @@ import {
 } from "@material-tailwind/react";
 // redux
 import { useDispatch } from "react-redux";
-import { logout } from "../../features/auth/authSlice";
+import { logout, getUserInfoThunk } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const [open, setOpen] = React.useState(0);
@@ -31,6 +31,10 @@ const Profile = () => {
     dispatch(logout());
     navigate("/login", { replace: true });
   };
+
+  useEffect(() => {
+    dispatch(getUserInfoThunk());
+  }, []);
 
   return (
     <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
