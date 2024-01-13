@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c63feded.css",
+    "main.js": "/static/js/main.3964646e.js",
+    "static/js/787.a23664bb.chunk.js": "/static/js/787.a23664bb.chunk.js",
+    "static/media/google-pixel.jpg": "/static/media/google-pixel.d5cabbc317f716346ce3.jpg",
+    "static/media/macbook.png": "/static/media/macbook.4238f815a1555738bb61.png",
+    "static/media/mini-speakers.png": "/static/media/mini-speakers.ddc783b92958bbdb9af9.png",
+    "static/media/iphone-accessories.png": "/static/media/iphone-accessories.25d6da215bb84bac2a8c.png",
+    "static/media/headphone.png": "/static/media/headphone.0f9b8376ddd96aa594ed.png",
+    "static/media/airpods.png": "/static/media/airpods.636646a7893483f058a8.png",
+    "static/media/iphone.png": "/static/media/iphone.29d795f7ac45e8c5e473.png",
+    "static/media/apple-watch.png": "/static/media/apple-watch.71104656fcec0206e49c.png",
+    "static/media/ipad.png": "/static/media/ipad.fa6dd19e091cd523c765.png",
+    "static/media/revicons.eot": "/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
+    "index.html": "/index.html",
+    "main.c63feded.css.map": "/static/css/main.c63feded.css.map",
+    "main.3964646e.js.map": "/static/js/main.3964646e.js.map",
+    "787.a23664bb.chunk.js.map": "/static/js/787.a23664bb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c63feded.css",
+    "static/js/main.3964646e.js"
+  ]
+}
